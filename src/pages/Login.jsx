@@ -17,7 +17,7 @@ import LoginForm, { loginScheme } from "../components/LoginForm"
 const Login = () => {
   const navigate = useNavigate()
   const { currentUser, error, loading } = useSelector((state) => state?.auth)
-  const  login  = useAuthCall()
+  const  {login}  = useAuthCall()
 
   return (
     <Container maxWidth="lg">

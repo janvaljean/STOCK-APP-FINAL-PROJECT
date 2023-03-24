@@ -17,7 +17,7 @@ import useAuthCall from "../hooks/useAuthCall";
 const Register = () => {
   const navigate = useNavigate();
   const { currentUser, error, loading } = useSelector((state) => state.auth);
-  const register = useAuthCall()
+  const  {register } = useAuthCall();
 
 
   const registerScheme = object({
