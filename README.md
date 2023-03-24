@@ -27,3 +27,10 @@ npm install veya yarn
 ## `Kullanilacak Araclar`
 
 - `Redux Dev Tools` : Chrome uzerinde calisan ve global state uzerinde yapilan tum degisikliklerin takip edilmesini saglayan tarayici uzantisidir. Indirmek icin [tiklayiniz.](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?utm_source=chrome-ntp-icon)`
+
+
+    "username": "sefa2",
+    "first_name": "sefa",
+    "last_name": "kk",
+    "email": "sefa2@example.com",
+    "token": "888f695d2efe37178d18ec5292bb5b8a138ce3f5"

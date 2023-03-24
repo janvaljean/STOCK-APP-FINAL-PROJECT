@@ -10,10 +10,13 @@ import { useSelector } from "react-redux";
 import {Formik, Form} from "formik";
 import { TextField } from "@mui/material";
 import { object, string} from 'yup';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { login } from "../apiCall/authCall";
+
 
 const Login = () => {
   const navigate = useNavigate();
-  const { currentUser, error } = useSelector((state) => state?.auth);
+  const { currentUser, error, loading } = useSelector((state) => state?.auth);
 
   const loginScheme = object({
   
@@ -67,7 +70,7 @@ const Login = () => {
           initialValues={{email: '', password:""}}
           validationSchema={loginScheme}
           onSubmit={(values, actions) => {
-            //login(values) //Post
+          login(values) //Post
             //navigate
           actions.resetForm()
           actions.setSubmitting(false)
@@ -99,7 +102,10 @@ const Login = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.password}
-              />             
+              />     
+              <LoadingButton type="submit" variant="contained" loading={loading}>
+                Submit
+              </LoadingButton>        
               </Box>
             </Form>
           )}
