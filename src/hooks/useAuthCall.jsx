@@ -1,20 +1,31 @@
 
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchFail, fetchStart, loginSuccess } from "../features/authSlice";
 
 const useAuthCall = () => {
- const login = async (userInfo) => {
+    const dispatch =useDispatch()
+    const navigate =useNavigate()
+    
+    
+    const login = async (userInfo) => {
     const BASE_URL = "https://14107.fullstack.clarusway.com/"
+    dispatch(fetchStart())
     try {
-        const {data} = await axios.post(
-            `${BASE_URL}account/auth/login/`,userInfo
+      const { data } = await axios.post(
+        `${BASE_URL}account/auth/login/`,
+        userInfo
         )
         console.log(data)
-        return data
+      dispatch(loginSuccess(data))
+      
+      navigate("/stock")
     } catch (error) {
-        console.log(error)
-        
+      dispatch(fetchFail())
+      console.log(error)
     }
-}
+  }
       return ( login )
 }
 
