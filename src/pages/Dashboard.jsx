@@ -17,8 +17,13 @@ import { useSelector } from 'react-redux';
 import useAuthCall from '../hooks/useAuthCall';
 import { display } from '@mui/system';
 import { Outlet } from 'react-router-dom';
+import { blueGrey, teal } from '@mui/material/colors';
+import { red } from '@mui/material/colors';
 
 const drawerWidth = 200;
+
+const color = red[500];
+
 
 function Dashboard(props) {
   const {currentUser} = useSelector((state) => state.auth)
@@ -90,8 +95,12 @@ function Dashboard(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              backgroundColor: blueGrey[900],
+            },
           }}
         >
           {drawer}
@@ -99,8 +108,12 @@ function Dashboard(props) {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              backgroundColor: blueGrey[900],
+            },
           }}
           open
         >

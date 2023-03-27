@@ -55,10 +55,10 @@ const icons = [
 ]
 
 const iconStyle = {
-  color: "black",
-  "& .MuiSvgIcon-root": { color: "black" },
-  "&:hover": { color: "red" },
-  "&:hover .MuiSvgIcon-root": { color: "red" },
+  color: "#FFFFFF",
+  "& .MuiSvgIcon-root": { color: "#FFFFFF" },
+  "&:hover": { color: "#159A9C" },
+  "&:hover .MuiSvgIcon-root": { color: "#159A9C" },
 }
 const MenuListItems = () => {
     const navigate = useNavigate()
@@ -75,7 +75,7 @@ const MenuListItems = () => {
             )}
             {!item.url.includes("http") && (
               <ListItemButton onClick={() => navigate(item.url)} sx={iconStyle}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemIcon >{item.icon}</ListItemIcon>
                 <ListItemText primary={item.title} />
               </ListItemButton>
             )}
