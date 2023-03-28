@@ -24,6 +24,7 @@ const useStockCall = () => {
       }	
     }
     const deleteStockData = async(url,id) =>{
+      console.log(id)
 
       dispatch(fetchStart())
 

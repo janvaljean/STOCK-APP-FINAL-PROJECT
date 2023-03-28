@@ -1,7 +1,9 @@
 import { Button, Grid, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import FirmCard from '../components/FirmCard'
 import useStockCall from '../hooks/useStockCall'
+import { flex } from '../styles/globalStyle'
 
 
 const Firms = () => {
@@ -36,10 +38,10 @@ const Firms = () => {
       <Typography variant="h4" color="error">Firms</Typography>
       <Button variant="contained">New Firms</Button>
 
-      <Grid container> 
+      <Grid container sx={flex}> 
         {firms?.map((firm) => (
           <Grid item key={firm.id}>
-            
+            <FirmCard firm={firm}/>
           </Grid>
         ))}
       </Grid>
