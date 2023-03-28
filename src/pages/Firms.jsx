@@ -1,33 +1,32 @@
 import { Button, Typography } from '@mui/material'
-import axios from 'axios'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchFail, fetchStart } from '../features/authSlice'
-import { getSuccess } from '../features/stockSlice'
+import useStockCall from '../hooks/useStockCall'
+
 
 const Firms = () => {
-    const {token} = useSelector((state) => state.auth)
-    //console.log(token)
-    const dispatch = useDispatch()
-    const getFirms = async() =>{
+    // const {token} = useSelector((state) => state.auth)
+    // const dispatch = useDispatch()
+    // const getFirms = async() =>{
       
-      const BASE_URL = "https://14107.fullstack.clarusway.com/"
+    //   const BASE_URL = "https://14107.fullstack.clarusway.com/"
       
-      dispatch(fetchStart())
-      const url = "firms"
+    //   dispatch(fetchStart())
+    //   const url = "firms"
 
-      try {
-        const {data} = await axios(`${BASE_URL}stock/firms/`, {headers: {Authorization: `Token ${token}`}})
-        console.log(data)
-        dispatch(getSuccess({data,url}))
-      } catch (error) {
-        dispatch(fetchFail())
-      }	
-    }
+    //   try {
+    //     const {data} = await axios(`${BASE_URL}stock/firms/`, {headers: {Authorization: `Token ${token}`}})
+    //     console.log(data)
+    //     dispatch(getSuccess({data,url}))
+    //   } catch (error) {
+    //     dispatch(fetchFail())
+    //   }	
+    // }
+   const { getStockData } = useStockCall()
 
-  useEffect(() => {
-    getFirms()
-  }, [token])
+    useEffect(() => {
+    // getFirms()
+    getStockData("firms")
+  }, [])
   
 
   return (
