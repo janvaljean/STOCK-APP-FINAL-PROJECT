@@ -30,7 +30,21 @@ const useStockCall = () => {
 
       try {
         await axiosWithToken.delete(`stock/${url}/${id}/`)
-        dispatch(getStockData({url}))
+        getStockData(url)
+
+      } catch (error) {
+        console.log(error)
+        dispatch(fetchFail())
+      }	
+    }
+
+    const postStockData = async(url, info) =>{
+
+      dispatch(fetchStart())
+
+      try {
+        await axiosWithToken.post(`stock/${url}/`, info)
+        getStockData(url)
 
       } catch (error) {
         console.log(error)
@@ -38,7 +52,7 @@ const useStockCall = () => {
       }	
     }
   
-      return { getStockData, deleteStockData }
+      return { getStockData, deleteStockData, postStockData }
 }
 
 export default useStockCall
