@@ -4,20 +4,14 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { modelStyle } from '../../styles/globalStyle';
 import  TextField  from '@mui/material/TextField';
-import { useState } from 'react';
 import useStockCall from '../../hooks/useStockCall';
 
-const initialInfo = {
-        name: "",
-        phone: "",
-        address: "",
-        image: "",
-    }
 
-export default function FirmModal({handleClose, open}) {
-    const [info, setInfo] = useState(initialInfo)
+
+export default function FirmModal({handleClose, open,info, setInfo, initialInfo }) {
+   
     
-    const {postStockData} = useStockCall()
+    const {postStockData, putStockData} = useStockCall()
 
     const handleChange = (e) => {
         
@@ -27,7 +21,8 @@ export default function FirmModal({handleClose, open}) {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        postStockData("firms", info)
+        if(info.id ){putStockData("firms",info)}
+        else{ postStockData("firms", info)}
         handleClose()
         setInfo(initialInfo)
     }
@@ -37,7 +32,10 @@ export default function FirmModal({handleClose, open}) {
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => {
+            handleClose()
+            setInfo(initialInfo)
+        }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

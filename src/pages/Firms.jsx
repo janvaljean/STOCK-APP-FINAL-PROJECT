@@ -7,8 +7,13 @@ import FirmModal from '../components/modals/FirmModal'
 import useStockCall from '../hooks/useStockCall'
 import { flex } from '../styles/globalStyle'
 
-
 const Firms = () => {
+  const initialInfo = {
+          name: "",
+          phone: "",
+          address: "",
+          image: "",
+      }
     // const {token} = useSelector((state) => state.auth)
     // const dispatch = useDispatch()
     // const getFirms = async() =>{
@@ -31,6 +36,7 @@ const Firms = () => {
    const [open, setOpen] = useState(false);
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
+   const [info, setInfo] = useState(initialInfo)
 
     useEffect(() => {
     // getFirms()
@@ -42,11 +48,11 @@ const Firms = () => {
     <div>
       <Typography variant="h4" color="error">Firms</Typography>
       <Button variant="contained" onClick={handleOpen}>New Firms</Button>
-      <FirmModal handleClose={handleClose} handleOpen={handleOpen} open={open}/>
+      <FirmModal handleClose={handleClose} handleOpen={handleOpen} open={open} setInfo={setInfo} info={info} initialInfo={initialInfo}/>
       <Grid container sx={flex}> 
         {firms?.map((firm) => (
           <Grid item key={firm.id}>
-            <FirmCard firm={firm}/>
+            <FirmCard firm={firm} handleOpen={handleOpen}  setInfo={setInfo} info={info}/>
           </Grid>
         ))}
       </Grid>

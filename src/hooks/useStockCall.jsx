@@ -57,7 +57,7 @@ const useStockCall = () => {
       dispatch(fetchStart())
 
       try {
-        await axiosWithToken.post(`stock/${url}/${info.id}/`, info)
+        await axiosWithToken.put(`stock/${url}/${info.id}/`, info)
         getStockData(url)
 
       } catch (error) {
